@@ -29,7 +29,7 @@
                   <a class="dropdown-item" id="11">CCTV-5+体育赛事高清[信号源1]</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" id="20">CCTV5+-HD[信号源0]</a>
-                  <a class="dropdown-item" id="21">CCTV5+-HD[信号源0]</a>
+                  <a class="dropdown-item" id="21">CCTV5+-HD[信号源1]</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" id="30">CCTV5[信号源0]</a>
                   <div class="dropdown-divider"></div>
@@ -84,7 +84,7 @@
         variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
         autoplay:true,//自动播放
         live:true,
-        video:'http://183.207.249.15/PLTV/3/224/3221225604/index.m3u8'//视频地址
+        video:'http://111.20.33.69/PLTV/88888888/224/3221225761/index.m3u8'//视频地址
       };
       var player=new ckplayer(videoObject);
     </script>
@@ -92,7 +92,7 @@
   <script>
   $('.dropdown-item').click(function(){
     var id = $(this).attr('id');
-    var 
+    
     var videourl = "";
     switch(id)
     {
@@ -100,7 +100,7 @@
         videourl = "http://183.207.249.7/PLTV/3/224/3221225604/index.m3u8";
         $('#curChannel').text("CCTV-5+体育赛事高清[信号源0]");
         break;
-        case "11":
+      case "11":
         videourl = "http://111.20.33.69/PLTV/88888888/224/3221225761/index.m3u8";
         $('#curChannel').text("CCTV-5+体育赛事高清[信号源1]");
         break;
