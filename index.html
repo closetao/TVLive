@@ -25,16 +25,19 @@
                   切换信号源
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" id="10">CCTV-5+体育赛事高清[信号源0]</a>
+                  <a class="dropdown-item"  id="10">CCTV-5+体育赛事高清[信号源0]</a>
                   <a class="dropdown-item" id="11">CCTV-5+体育赛事高清[信号源1]</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" id="20">CCTV5+-HD[信号源0]</a>
-                  <a class="dropdown-item" id="21">CCTV5+-HD[信号源1]</a>
+                  <a class="dropdown-item"  id="20">CCTV5+-HD[信号源0]</a>
+                  <a class="dropdown-item" id="21">CCTV5+-HD[信号源0]</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" id="30">CCTV5[信号源0]</a>
+                  <a class="dropdown-item" id="31">CCTV5[江苏南京移动1]</a>
+                  <a class="dropdown-item" id="32">CCTV5[江苏南京移动2]</a>
+                  <a class="dropdown-item" id="33">CCTV5[江苏南京移动3]</a>
+                  
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" id="40">CCTV1-综合[信号源0]</a>
-                  <a class="dropdown-item" id="41">CCTV1-综合[信号源1]</a>
+                  <a class="dropdown-item" id="40">风云足球[直播源0]</a>
 
                 </div>
               </li>
@@ -84,7 +87,7 @@
         variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
         autoplay:true,//自动播放
         live:true,
-        video:'http://111.20.33.69/PLTV/88888888/224/3221225761/index.m3u8'//视频地址
+        video:'http://223.110.243.157/PLTV/3/224/3221226324/index.m3u8'
       };
       var player=new ckplayer(videoObject);
     </script>
@@ -116,14 +119,37 @@
         videourl = "http://223.110.241.204:6610/cntv/live1/cctv-5/cctv-5/index.m3u8";
         $('#curChannel').text("CCTV5[信号源0]");
         break;
+      case "31":
+        videourl = "http://223.110.243.136/PLTV/3/224/3221227166/index.m3u8";
+        $('#curChannel').text("CCTV5[江苏南京移动1]");
+        break;
+      case "32":
+        videourl = "http://183.207.249.6/PLTV/3/224/3221226324/index.m3u8";
+        $('#curChannel').text("CCTV5[江苏南京移动2]");
+        break;
+      case "33":
+        videourl = "http://223.110.243.157/PLTV/3/224/3221226324/index.m3u8";
+        $('#curChannel').text("CCTV5[江苏南京移动3]");
+        break; 
+
       case "40":
-        videourl = "http://223.110.241.204:6610/cntv/live1/HD-2500k-1080P-cctv1/HD-2500k-1080P-cctv1/index.m3u8";
-        $('#curChannel').text("CCTV1-综合[信号源0]");
-        break;
-      case "41":
-        videourl = "http://223.110.241.204:6610/cntv/live1/cctv-1/cctv-1/index.m3u8";
-        $('#curChannel').text("CCTV1-综合[信号源1]");
-        break;
+        videourl = "http://223.110.243.168/PLTV/2510088/224/3221227344/1.m3u8";
+        $('#curChannel').text("风云足球[直播源0]");
+        break;  
+
+
+      //风云足球
+     // http://223.110.243.168/PLTV/2510088/224/3221227344/1.m3u8  
+
+      // 可以用播放器播放，但网页版无效
+      // case "40":
+      //   videourl = "http://223.110.241.204:6610/cntv/live1/HD-2500k-1080P-cctv1/HD-2500k-1080P-cctv1/index.m3u8";
+      //   $('#curChannel').text("CCTV1-综合[信号源0]");
+      //   break;
+      // case "41":
+      //   videourl = "http://223.110.241.204:6610/cntv/live1/cctv-1/cctv-1/index.m3u8";
+      //   $('#curChannel').text("CCTV1-综合[信号源1]");
+      //   break;
     }
     var videoObject = {
         container: '#a1',//“#”代表容器的ID，“.”或“”代表容器的class
