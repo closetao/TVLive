@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-cn">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script type="text/javascript" src="ckplayer/ckplayer.js" charset="utf-8"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <title>世界杯直播</title>
+  </head>
+  <body>
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#" id="channeltitle">世界杯直播</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  切换信号源
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" id="10">CCTV-5+体育赛事高清[信号源0]</a>
+                  <a class="dropdown-item" id="11">CCTV-5+体育赛事高清[信号源1]</a>
+                  <a class="dropdown-item" id="c2">CCTV5+-HD</a>
+                  <a class="dropdown-item" id="c3">CCTV1-综合HD</a>
+                  <a class="dropdown-item" id="c3">CCTV1-综合</a>
+                  
+                </div>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link disabled"  id="curChannel"></a>
+                </li>
+            </ul>
+          </div>
+        </nav>
+
+       <div class="container" style="height: 100vh;">
+       <div class="row" style="height: 2vh;"></div>
+        <div class="row" style="height: 70vh; " >
+            <div id="a1" class="col-sm-8 col-xs-8 col-sm-8 offset-sm-2 offset-md-2 offset-lg-2 col-lg-8" ></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-xs-8 col-sm-8 offset-sm-2 offset-md-2 offset-lg-2 col-lg-8" >
+                <img class="center-block" alt="世界杯赛程表" style="margin-top: 10px; margin-bottom: 50px; max-width: 100%; height: auto; width:auto;" src="./赛程表.png"/>
+            </div>
+            
+        </div>
+       </div>
+      
+            
+        
+        
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  
+    <script type="text/javascript">
+      var videoObject = {
+        container: '#a1',//“#”代表容器的ID，“.”或“”代表容器的class
+        variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
+        autoplay:true,//自动播放
+        live:true,
+        video:'http://183.207.249.15/PLTV/3/224/3221225604/index.m3u8'//视频地址
+      };
+      var player=new ckplayer(videoObject);
+    </script>
+  
+  <script>
+  $('.dropdown-item').click(function(){
+    var id = $(this).attr('id');
+    var videourl = "";
+    switch(id)
+    {
+      case "10":
+        videourl = "http://183.207.249.7/PLTV/3/224/3221225604/index.m3u8";
+        $('#curChannel').text("CCTV-5+体育赛事高清[信号源0]");
+        break;
+        case "11":
+        videourl = "http://111.20.33.69/PLTV/88888888/224/3221225761/index.m3u8";
+        $('#curChannel').text("CCTV-5+体育赛事高清[信号源1]");
+        break;
+      case "2":
+        videourl = "http://183.207.249.15/PLTV/3/224/3221225604/index.m3u8";
+        $('#curChannel').text("CCTV5+-HD");
+        break;
+        case "3":
+        videourl = "http://183.207.249.15/PLTV/3/224/3221225680/index.m3u8";
+        $('#curChannel').text("CCTV1-HD");
+        break;
+        case "4":
+        videourl = "http://183.207.249.15/PLTV/3/224/3221225530/index.m3u8";
+        $('#curChannel').text("CCTV1-综合");
+        break;
+        
+    }
+    var videoObject = {
+        container: '#a1',//“#”代表容器的ID，“.”或“”代表容器的class
+        variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
+        autoplay:false,//自动播放
+        live:true,
+        video: videourl//视频地址
+      };
+      var player=new ckplayer(videoObject);
+  })
+  </script>
+
+
+
+  </body>
+</html>
