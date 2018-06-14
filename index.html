@@ -27,10 +27,15 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" id="10">CCTV-5+体育赛事高清[信号源0]</a>
                   <a class="dropdown-item" id="11">CCTV-5+体育赛事高清[信号源1]</a>
-                  <a class="dropdown-item" id="c2">CCTV5+-HD</a>
-                  <a class="dropdown-item" id="c3">CCTV1-综合HD</a>
-                  <a class="dropdown-item" id="c3">CCTV1-综合</a>
-                  
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" id="20">CCTV5+-HD[信号源0]</a>
+                  <a class="dropdown-item" id="21">CCTV5+-HD[信号源0]</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" id="30">CCTV5[信号源0]</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" id="40">CCTV1-综合[信号源0]</a>
+                  <a class="dropdown-item" id="41">CCTV1-综合[信号源1]</a>
+
                 </div>
               </li>
               <li class="nav-item">
@@ -87,6 +92,7 @@
   <script>
   $('.dropdown-item').click(function(){
     var id = $(this).attr('id');
+    var 
     var videourl = "";
     switch(id)
     {
@@ -98,19 +104,26 @@
         videourl = "http://111.20.33.69/PLTV/88888888/224/3221225761/index.m3u8";
         $('#curChannel').text("CCTV-5+体育赛事高清[信号源1]");
         break;
-      case "2":
+      case "20":
         videourl = "http://183.207.249.15/PLTV/3/224/3221225604/index.m3u8";
-        $('#curChannel').text("CCTV5+-HD");
+        $('#curChannel').text("CCTV5+-HD[信号源0]");
         break;
-        case "3":
-        videourl = "http://183.207.249.15/PLTV/3/224/3221225680/index.m3u8";
-        $('#curChannel').text("CCTV1-HD");
+      case "21":
+        videourl = "http://223.110.241.204:6610/cntv/live1/hdcctv05plus/hdcctv05plus/index.m3u8";
+        $('#curChannel').text("CCTV5+-HD[信号源1]");
         break;
-        case "4":
-        videourl = "http://183.207.249.15/PLTV/3/224/3221225530/index.m3u8";
-        $('#curChannel').text("CCTV1-综合");
+      case "30":
+        videourl = "http://223.110.241.204:6610/cntv/live1/cctv-5/cctv-5/index.m3u8";
+        $('#curChannel').text("CCTV5[信号源0]");
         break;
-        
+      case "40":
+        videourl = "http://223.110.241.204:6610/cntv/live1/HD-2500k-1080P-cctv1/HD-2500k-1080P-cctv1/index.m3u8";
+        $('#curChannel').text("CCTV1-综合[信号源0]");
+        break;
+      case "41":
+        videourl = "http://223.110.241.204:6610/cntv/live1/cctv-1/cctv-1/index.m3u8";
+        $('#curChannel').text("CCTV1-综合[信号源1]");
+        break;
     }
     var videoObject = {
         container: '#a1',//“#”代表容器的ID，“.”或“”代表容器的class
