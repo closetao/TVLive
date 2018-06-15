@@ -45,6 +45,10 @@
                   <a class="nav-link disabled"  id="curChannel"></a>
                 </li>
             </ul>
+            <form class="form-inline my-4 my-lg-0">
+                <input id="playUrl" class="form-control mr-sm-4" placeholder="直播源地址"/>
+                <button id="playBtn" class="btn btn-outline-success my-4 my-sm-0" >播放</button>
+              </form>
           </div>
         </nav>
 
@@ -93,10 +97,22 @@
     </script>
   
   <script>
-  $('.dropdown-item').click(function(){
-    var id = $(this).attr('id');
-    
     var videourl = "";
+    $('.btn').click(function(){
+    var id = $(this).attr('id');
+      switch(id)
+      {
+        case "playBtn":
+          videourl = $('#playUrl').val();
+          $('#curChannel').text("用户自定义信号源");
+          if(videourl.trim() == "") return;
+          break;
+      }
+    });
+
+    $('.dropdown-item').click(function(){
+      var id = $(this).attr('id');
+    
     switch(id)
     {
       case "10":
