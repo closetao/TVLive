@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script type="text/javascript" src="ckplayer/ckplayer.js" charset="utf-8"></script>
+    
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <link rel="shortcut icon" href="worldcup.ico" >
     <!-- Bootstrap CSS -->
@@ -56,7 +56,7 @@
        <div class="container" style="height: 100vh;">
        <div class="row" style="height: 2vh;"></div>
         <div class="row" style="height: 70vh; " >
-            <div id="a1" class="col-sm-8 col-xs-8 col-sm-8 offset-sm-2 offset-md-2 offset-lg-2 col-lg-8" ></div>
+            <video controls id="a1" class="col-sm-8 col-xs-8 col-sm-8 offset-sm-2 offset-md-2 offset-lg-2 col-lg-8" ></video>
         </div>
         <div class="row">
             <div class="col-sm-8 col-xs-8 col-sm-8 offset-sm-2 offset-md-2 offset-lg-2 col-lg-8" >
@@ -86,19 +86,31 @@
   gtag('config', 'UA-98433865-2');
 </script>
 
-
-    <script type="text/javascript">
-      var videoObject = {
-        container: '#a1',//“#”代表容器的ID，“.”或“”代表容器的class
-        variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
-        autoplay:true,//自动播放
-        live:true,
-        video:'http://223.110.243.157/PLTV/3/224/3221226324/index.m3u8'
-      };
-      var player=new ckplayer(videoObject);
-    </script>
+<script>
+  var initVideoUrl = "http://111.20.33.72/PLTV/88888888/224/3221225545/index.m3u8";
+  var video = document.getElementById('a1');
+  if(Hls.isSupported()) {
+    var hls = new Hls();
+    hls.loadSource(initVideoUrl);
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED,function() {
+      video.play();
+  });
+ }
+ // hls.js is not supported on platforms that do not have Media Source Extensions (MSE) enabled.
+ // When the browser has built-in HLS support (check using `canPlayType`), we can provide an HLS manifest (i.e. .m3u8 URL) directly to the video element throught the `src` property.
+ // This is using the built-in support of the plain video element, without using hls.js.
+ // Note: it would be more normal to wait on the 'canplay' event below however on Safari (where you are most likely to find built-in HLS support) the video.src URL must be on the user-driven
+ // white-list before a 'canplay' event will be emitted; the last video event that can be reliably listened-for when the URL is not on the white-list is 'loadedmetadata'.
+  else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    video.src = initVideoUrl;
+    video.addEventListener('loadedmetadata',function() {
+      video.play();
+    });
+  }
+</script>
   
-  <script>
+<script>
     var videourl = "";
     $('.btn').click(function(){
     var id = $(this).attr('id');
