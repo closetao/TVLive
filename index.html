@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script type="text/javascript" src="ckplayer/ckplayer.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <link rel="shortcut icon" href="worldcup.ico" >
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -85,6 +86,7 @@
   gtag('config', 'UA-98433865-2');
 </script>
 
+
     <script type="text/javascript">
       var videoObject = {
         container: '#a1',//“#”代表容器的ID，“.”或“”代表容器的class
@@ -110,6 +112,30 @@
       }
     });
 
+    var video = document.getElementById('a1');
+  if(Hls.isSupported()) {
+    var hls = new Hls();
+    hls.loadSource(videourl);
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED,function() {
+      video.play();
+  });
+ }
+ // hls.js is not supported on platforms that do not have Media Source Extensions (MSE) enabled.
+ // When the browser has built-in HLS support (check using `canPlayType`), we can provide an HLS manifest (i.e. .m3u8 URL) directly to the video element throught the `src` property.
+ // This is using the built-in support of the plain video element, without using hls.js.
+ // Note: it would be more normal to wait on the 'canplay' event below however on Safari (where you are most likely to find built-in HLS support) the video.src URL must be on the user-driven
+ // white-list before a 'canplay' event will be emitted; the last video event that can be reliably listened-for when the URL is not on the white-list is 'loadedmetadata'.
+  else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    video.src = videourl;
+    video.addEventListener('loadedmetadata',function() {
+      video.play();
+    });
+  }
+      </script>
+  
+  <script>
+    var videourl = "";
     $('.dropdown-item').click(function(){
       var id = $(this).attr('id');
     
